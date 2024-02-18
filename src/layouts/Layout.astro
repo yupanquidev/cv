@@ -7,7 +7,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -20,32 +20,135 @@ const { title } = Astro.props;
 		<slot />
 	</body>
 </html>
+
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+	@font-face {
+		font-family: "N27";
+		src:
+			url("/fonts/n27/extralight.woff") format("woff"),
+			url("/fonts/n27/extralight.woff2") format("woff2"),
+			url("/fonts/n27/extralight.ttf") format("truetype");
+		font-weight: 300;
+		font-display: swap;
+		font-style: normal;
 	}
+
+	@font-face {
+		font-family: "N27";
+		src:
+			url("/fonts/n27/light.woff") format("woff"),
+			url("/fonts/n27/light.woff2") format("woff2"),
+			url("/fonts/n27/light.ttf") format("truetype");
+		font-weight: 300;
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "N27";
+		src:
+			url("/fonts/n27/regular.woff") format("woff"),
+			url("/fonts/n27/regular.woff2") format("woff2"),
+			url("/fonts/n27/regular.ttf") format("truetype");
+		font-weight: 400;
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "N27";
+		src:
+			url("/fonts/n27/medium.woff") format("woff"),
+			url("/fonts/n27/medium.woff2") format("woff2"),
+			url("/fonts/n27/medium.ttf") format("truetype");
+		font-weight: 500;
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "N27";
+		src:
+			url("/fonts/n27/bold.woff") format("woff"),
+			url("/fonts/n27/bold.woff2") format("woff2"),
+			url("/fonts/n27/bold.ttf") format("truetype");
+		font-weight: 700;
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Monaspace Neon";
+		src: url("/fonts/monaspace/NeonVarVF.ttf") format("truetype-variations");
+		font-weight: 100 900;
+		font-stretch: 50% 200%;
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Monaspace Argon";
+		src: url("/fonts/monaspace/ArgonVarVF.ttf") format("truetype-variations");
+		font-weight: 100 900;
+		font-stretch: 50% 200%;
+		font-display: swap;
+		font-style: normal;
+	}
+
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
+		font-family: "Monaspace Neon", monospace;
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+
+	* {
+		min-width: 0;
+		font: inherit;
+	}
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	img,
+	video,
+	svg {
+		display: block;
+		height: auto;
+		max-width: 100%;
+	}
+
+	body {
+		margin: 0;
+		min-height: 100dvh;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 0;
+		font-family: "N27";
+		text-wrap: balance;
+	}
+
+	p {
+		text-wrap: pretty;
+		font-size: 0.9rem;
+		line-height: 1.5;
+		margin: 0;
+		color: #666;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
 	}
 </style>

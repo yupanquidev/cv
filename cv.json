@@ -1,0 +1,191 @@
+{
+  "basics": {
+    "name": "Humberto Yupanqui Apaza",
+    "label": "Full Stack Developer con más de +3 años de experiencia & estudiante de Ingeniería de Software",
+    "image": "https://avatars.githubusercontent.com/u/115683237?v=4",
+    "email": "yupanquidev@gmail.com",
+    "phone": "+51 983 844 911",
+    "url": "https://yupanqui.dev",
+    "summary": "+3 años de experiencia en el desarrollo de aplicaciones web y móviles. He trabajado en proyectos de diferentes tamaños y tecnologías. Me gusta aprender y compartir conocimientos. Me encanta la música y el café.",
+    "location": {
+      "address": "",
+      "postalCode": "08820",
+      "city": "Cusco",
+      "countryCode": "PE",
+      "region": "Perú"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "midudev",
+        "url": "https://linkedin.com/in/yupanquidev"
+      },
+      {
+        "network": "X",
+        "username": "midudev",
+        "url": "https://x.com/yupanquidev"
+      },
+      {
+        "network": "GitHub",
+        "username": "midudev",
+        "url": "https://github.com/yupanquidev"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "ITETNIA",
+      "position": "Full Stack Developer",
+      "url": "itetnia.com",
+      "startDate": "2023-08-01",
+      "summary": ".",
+      "highlights": [
+        "Started the company"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "SENATI",
+      "url": "https://www.senati.edu.pe",
+      "area": "Ingeniero de Software",
+      "studyType": "Bachelor",
+      "startDate": "2021-01-01"
+    }
+  ],
+  "skills": [
+    {
+      "name": "HTML",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend"
+      ]
+    },
+    {
+      "name": "CSS",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "Diseño Responsive"
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "Backend",
+        "Fullstack"
+      ]
+    },
+    {
+      "name": "Tailwind",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "CSS Framework",
+        "Diseño Responsive"
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "Backend",
+        "JavaScript Superset"
+      ]
+    },
+    {
+      "name": "Node",
+      "keywords": [
+        "Desarrollo Web",
+        "Backend",
+        "JavaScript",
+        "Servidor"
+      ]
+    },
+    {
+      "name": "MySQL",
+      "keywords": [
+        "Bases de Datos",
+        "SQL",
+        "Almacenamiento de Datos",
+        "Backend"
+      ]
+    },
+    {
+      "name": "Git",
+      "keywords": [
+        "Control de Versiones",
+        "Colaboración",
+        "Código Fuente"
+      ]
+    },
+    {
+      "name": "GitHub",
+      "keywords": [
+        "Control de Versiones",
+        "Colaboración",
+        "Código Fuente",
+        "Git"
+      ]
+    },
+    {
+      "name": "Next.js",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "React Framework",
+        "SSR",
+        "Static Generation"
+      ]
+    },
+    {
+      "name": "React",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "JavaScript Library",
+        "UI"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Spanish",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "English",
+      "fluency": "Advanced"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Wildlife",
+      "keywords": [
+        "Ferrets",
+        "Unicorns"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "name": "Jane Doe",
+      "reference": "Reference…"
+    }
+  ],
+  "projects": [
+    {
+      "name": "OdontoApp",
+      "isActive": true,
+      "description": "Aplicación para la gestión de clínicas dentales",
+      "highlights": [
+        "Gestión de pacientes",
+        "Gestión de citas"
+      ],
+      "url": "https://mars.codes"
+    }
+  ]
+}

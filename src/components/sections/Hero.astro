@@ -1,0 +1,171 @@
+---
+import Section from "@/components/Section.astro";
+import { basics } from "@/cv";
+import GitHub from "@/icons/GitHub.astro";
+import LinkedIn from "@/icons/LinkedIn.astro";
+import Mail from "@/icons/Mail.astro";
+import Phone from "@/icons/Phone.astro";
+import World from "@/icons/World.astro";
+import X from "@/icons/X.astro";
+
+const { name, label, image, location, profiles, phone, email } = basics;
+const { city, region } = location;
+
+const SOCIAL_ICONS: Record<string, any> = {
+  GitHub,
+  LinkedIn,
+  X,
+};
+
+const linkedinInfo = profiles.find(({ network }) => network === "LinkedIn");
+const likedinUrl = linkedinInfo?.url;
+
+const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
+---
+
+<Section>
+  <div class="container">
+    <div class="info">
+      <h1>{name}</h1>
+      <h2>{label}</h2>
+      <span>
+        <World />
+        {city}, {region}
+      </span>
+      <footer class="print">
+        {printInfo}
+      </footer>
+      <footer class="no-print">
+        {
+          email && (
+            <a
+              href={`mailto:${email}`}
+              title={`Enviar un correo electrónico a ${name} al correo ${email}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Mail />
+            </a>
+          )
+        }
+        {
+          phone && (
+            <a
+              href={`tel:${phone}`}
+              title={`Llamar por teléfono a ${name} al número ${phone}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Phone />
+            </a>
+          )
+        }
+        {
+          profiles.map(({ network, url, username }) => {
+            const Icon = SOCIAL_ICONS[network];
+
+            return (
+              <a
+                href={url}
+                title={`Visitar el perfil de ${name} en ${network}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon />
+              </a>
+            );
+          })
+        }
+      </footer>
+    </div>
+    <figure>
+      <img src={image} alt={name} />
+    </figure>
+  </div>
+</Section>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-right: 32px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    color: #444;
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+
+  img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    width: 128px;
+    border-radius: 16px;
+  }
+
+  span {
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.85;
+    letter-spacing: -0.05rem;
+  }
+
+  footer {
+    font-size: 0.65rem;
+    color: #555;
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  footer a {
+    color: #777;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
+    padding: 4px;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  footer a:hover {
+    background-color: #f5f5f5;
+  }
+
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+  }
+
+  .print {
+    display: none !important;
+  }
+
+  @media print {
+    .print {
+      display: block !important;
+    }
+  }
+</style>
