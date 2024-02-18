@@ -7,30 +7,28 @@ import { projects } from "@/cv";
 <Section title="Projects">
   <ul>
     {
-      projects.map(
-        ({ url, description, highlights, name, github, isActive }) => {
-          return (
-            <li>
-              <article>
-                <header>
-                  <h3>
-                    <a href={url} title={`Ver el proyecto ${name}`}>
-                      {name}
-                    </a>
-                    {isActive && <span>•</span>}
-                  </h3>
-                  <p>{description}</p>
-                </header>
-                <footer>
-                  {highlights.map((highlights) => {
-                    return <span>{highlights}</span>;
-                  })}
-                </footer>
-              </article>
-            </li>
-          );
-        },
-      )
+      projects.map(({ url, description, highlights, name, isActive }) => {
+        return (
+          <li>
+            <article>
+              <header>
+                <h3>
+                  <a href={url} title={`Ver el proyecto ${name}`}>
+                    {name}
+                  </a>
+                  {isActive && <span>•</span>}
+                </h3>
+                <p>{description}</p>
+              </header>
+              <footer>
+                {highlights.map((highlights) => {
+                  return <span>{highlights}</span>;
+                })}
+              </footer>
+            </article>
+          </li>
+        );
+      })
     }
   </ul>
 </Section>
