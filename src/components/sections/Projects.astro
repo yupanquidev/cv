@@ -4,7 +4,7 @@ import Section from "@/components/Section.astro";
 import { projects } from "@/cv";
 ---
 
-<Section title="Projects">
+<Section title="Proyectos">
   <ul>
     {
       projects.map(({ url, description, highlights, name, isActive }) => {
@@ -36,14 +36,14 @@ import { projects } from "@/cv";
 <style>
   ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(193px, 1fr));
+    gap: 0.5rem;
   }
 
   article {
-    border-radius: 8px;
-    border: 1px solid #f2f2f2;
-    gap: 16px;
+    border-radius: 0.5rem;
+    border: 1px solid #bcbcbc;
+    gap: 1rem;
     display: flex;
     flex-direction: column;
     padding: 16px;
@@ -63,7 +63,10 @@ import { projects } from "@/cv";
   }
 
   h3 {
-    margin-bottom: 4px;
+    margin-bottom: 0.625rem;
+    color: #030712;
+    font-weight: 600;
+    font-size: 1rem;
   }
 
   h3 span {
@@ -71,8 +74,7 @@ import { projects } from "@/cv";
   }
 
   p {
-    font-size: 0.7rem;
-    line-height: 1.2;
+    font-size: 0.75rem;
     margin-bottom: 4px;
   }
 
@@ -84,10 +86,11 @@ import { projects } from "@/cv";
   }
 
   footer span {
-    border-radius: 6px;
+    border-radius: 0.5rem;
     background: #eee;
-    color: #333;
-    font-size: 0.6rem;
+    color: #6b7280;
+    font-size: 0.625rem;
+    font-family: "Monaspace Argon";
     font-weight: 500;
     padding: 0.2rem 0.6rem;
   }
