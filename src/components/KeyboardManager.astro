@@ -4,56 +4,9 @@ import { basics } from "@/cv";
 const { profiles } = basics;
 
 const SOCIAL_ICONS: Record<string, string> = {
-  X: `<svg
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
-  fill="none"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-  <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
-  <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
-</svg>`,
-  GitHub: `<svg
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
-  fill="none"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-  <path
-    d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
-  ></path>
-</svg>
-`,
-  LinkedIn: `<svg
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  stroke-width="2"
-  stroke="currentColor"
-  fill="none"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-  <path
-    d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"
-  ></path>
-  <path d="M8 11l0 5"></path>
-  <path d="M8 8l0 .01"></path>
-  <path d="M12 16l0 -5"></path>
-  <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
-</svg>
-`,
+  X: `<svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>`,
+  GitHub: `<svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path></svg>`,
+  LinkedIn: `<svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M8 11l0 5"></path><path d="M8 8l0 .01"></path><path d="M12 16l0 -5"></path><path d="M16 16v-3a2 2 0 0 0 -4 0"></path></svg>`,
 };
 
 const profilesInfo = profiles.map(({ network, url }) => {
@@ -65,7 +18,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
     title: `Visitar ${network}`,
     url,
     icon,
-    hotkey: `ctrl+${firstLetter}`,
+    hotkey: `ctrl + ${firstLetter}`,
   };
 });
 ---
@@ -133,13 +86,14 @@ const profilesInfo = profiles.map(({ network, url }) => {
   }
 
   footer {
-    font-weight: 500;
-    background: #fdfdfd;
+    font-weight: 400;
+    background: #fff;
+    color: #030712;
     border-top: 1px solid #eee;
     position: fixed;
-    bottom: 0px;
+    bottom: 0;
     width: 100%;
-    padding: 20px 16px;
+    padding: 1.25rem 1rem;
     text-align: center;
 
     view-timeline-name: --revealing;
@@ -152,9 +106,10 @@ const profilesInfo = profiles.map(({ network, url }) => {
 
   kbd {
     font-family: "Monaspace Argon";
-    background: #f3f4f6;
-    border-radius: 4px;
-    padding: 2px 4px;
+    background-color: #f1f1f1;
+    color: #030712;
+    border-radius: 0.25rem;
+    padding: 0.2rem 0.6rem;
     font-size: 14px;
     font-weight: 700;
   }
