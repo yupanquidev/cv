@@ -23,12 +23,19 @@ const { name } = basics;
 		<Skills />
 	</main>
 	<KeyboardManager />
+	<!-- <Keyboard /> -->
 </Layout>
 
 <style>
 	main {
-		padding: 4rem;
+		padding: 1.5rem 1.5rem 5rem 1.5rem;
 		margin: 0 auto;
 		width: 100%;
+	}
+
+	@media (min-width: 640px) {
+		main {
+			padding: 4rem;
+		}
 	}
 </style>

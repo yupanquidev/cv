@@ -114,6 +114,7 @@ const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
   figure {
     margin: 0;
     padding: 0 1rem;
+    display: none;
   }
 
   img {
@@ -157,19 +158,25 @@ const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
     background-color: #f3f4f6;
   }
 
+  .print {
+    display: none !important;
+  }
+
   @media print {
     .no-print {
       display: none !important;
     }
   }
 
-  .print {
-    display: none !important;
-  }
-
   @media print {
     .print {
       display: block !important;
+    }
+  }
+
+  @media (min-width: 640px) {
+    figure {
+      display: block;
     }
   }
 </style>
