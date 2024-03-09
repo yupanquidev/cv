@@ -40,7 +40,7 @@ const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
           email && (
             <a
               href={`mailto:${email}`}
-              title={`Enviar un correo electrónico a ${name} al correo ${email}`}
+              aria-label={`Enviar un correo electrónico a ${name} al correo ${email}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -52,7 +52,7 @@ const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
           phone && (
             <a
               href={`tel:${phone}`}
-              title={`Llamar por teléfono a ${name} al número ${phone}`}
+              aria-label={`Llamar por teléfono a ${name} al número ${phone}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -67,8 +67,8 @@ const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
             return (
               <a
                 href={url}
-                title={`Visitar el perfil de ${name} en ${network}`}
                 target="_blank"
+                aria-label={`Visitar el perfil de ${name} en ${network}`}
                 rel="noopener noreferrer"
               >
                 <Icon />
