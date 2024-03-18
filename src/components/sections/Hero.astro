@@ -29,7 +29,7 @@ const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
       <h1>{name}</h1>
       <p>{label}</p>
       <span>
-        <World />
+        <World width="18" height="18" />
         {city}, {region}
       </span>
       <footer class="print">
@@ -44,7 +44,7 @@ const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Mail />
+              <Mail width="18" height="18" />
             </a>
           )
         }
@@ -56,7 +56,7 @@ const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Phone />
+              <Phone width="18" height="18" />
             </a>
           )
         }
@@ -71,7 +71,7 @@ const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
                 aria-label={`Visitar el perfil de ${name} en ${network}`}
                 rel="noopener noreferrer"
               >
-                <Icon />
+                <Icon width="18" height="18" />
               </a>
             );
           })
