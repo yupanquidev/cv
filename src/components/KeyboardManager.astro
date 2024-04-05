@@ -22,7 +22,7 @@ const SOCIAL_ICONS: any = {
   Pulsa <kbd>ctrl</kbd> + <kbd>K</kbd> para abrir la paleta de comandos.
 </footer>
 
-<dialog id="modal" class="modal">
+<dialog class="modal">
   <section>
     <header>
       <label for="">
@@ -32,7 +32,7 @@ const SOCIAL_ICONS: any = {
     <main>
       <article>
         <p class="title-select">acciones</p>
-        <SelectAction className="select" action="Imprimir" hotkey="p">
+        <SelectAction className="select-item" action="Imprimir" hotkey="p">
           <Printer slot="icon" width="24" height="24" />
         </SelectAction>
       </article>
@@ -44,7 +44,7 @@ const SOCIAL_ICONS: any = {
             const firstLetter = network[0].toUpperCase();
             return (
               <SelectAction
-                className="select"
+                className="select-item"
                 action={`Visitar ${network}`}
                 hotkey={firstLetter}
                 url={url}
@@ -58,12 +58,12 @@ const SOCIAL_ICONS: any = {
     </main>
     <footer>
       <span>
-        <CornerDownLeft className="example-key" width="14" height="14" />
+        <CornerDownLeft className="key-icon" width="14" height="14" />
         seleccionar
       </span>
       <span>
-        <ArrowDown className="example-key" width="14" height="14" />
-        <ArrowUp className="example-key" width="14" height="14" />
+        <ArrowDown className="key-icon" width="14" height="14" />
+        <ArrowUp className="key-icon" width="14" height="14" />
         navegar
       </span>
       <span><span class="esc">esc</span>cerrar</span>
@@ -152,13 +152,13 @@ const SOCIAL_ICONS: any = {
     display: flex;
     gap: 1.5rem;
     align-items: center;
-  }
 
-  footer span {
-    display: flex;
-    gap: 0.5rem;
-    color: #6b6f76;
-    font-weight: 400;
+    & span {
+      display: flex;
+      gap: 0.5rem;
+      color: #6b6f76;
+      font-weight: 400;
+    }
   }
 
   .esc {
@@ -203,12 +203,12 @@ const SOCIAL_ICONS: any = {
 </style>
 
 <style is:global>
-  .select:focus {
+  .select-item:focus {
     border-left: 2px solid rgb(110, 94, 210);
     background-color: rgb(248, 249, 251);
   }
 
-  .example-key {
+  .key-icon {
     background-color: rgb(239, 241, 244);
     border-radius: 0.25rem;
     color: #6b6f76;
