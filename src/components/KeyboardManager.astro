@@ -1,75 +1,78 @@
 ---
-import { basics } from "@/cv";
+import SelectAction from "@/components/SelectAction.astro";
+import ArrowDown from "@/icons/ArrowDown.astro";
+import ArrowUp from "@/icons/ArrowUp.astro";
+import CornerDownLeft from "@/icons/CornerDownLeft.astro";
+import GitHub from "@/icons/GitHub.astro";
+import LinkedIn from "@/icons/LinkedIn.astro";
+import Printer from "@/icons/Printer.astro";
+import X from "@/icons/X.astro";
 
+import { basics } from "@/cv";
 const { profiles } = basics;
 
-const SOCIAL_ICONS: Record<string, string> = {
-  X: `<svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>`,
-  GitHub: `<svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path></svg>`,
-  LinkedIn: `<svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M8 11l0 5"></path><path d="M8 8l0 .01"></path><path d="M12 16l0 -5"></path><path d="M16 16v-3a2 2 0 0 0 -4 0"></path></svg>`,
+const SOCIAL_ICONS: any = {
+  LinkedIn,
+  GitHub,
+  X,
 };
-
-const profilesInfo = profiles.map(({ network, url }) => {
-  const icon = SOCIAL_ICONS[network];
-  const firstLetter = network[0].toUpperCase();
-  return {
-    id: network,
-    section: "Social",
-    title: `Visitar ${network}`,
-    url,
-    icon,
-    hotkey: `ctrl + ${firstLetter}`,
-  };
-});
 ---
 
 <footer class="no-print">
   Pulsa <kbd>ctrl</kbd> + <kbd>K</kbd> para abrir la paleta de comandos.
 </footer>
 
-<ninja-keys
-  data-info={JSON.stringify(profilesInfo)}
-  placeholder="Buscar comando"
-  hideBreadcrumbs
->
-</ninja-keys>
-
-<script>
-  import "ninja-keys";
-  import "ninja-keys";
-
-  const ninja = document.querySelector("ninja-keys");
-
-  if (ninja != null) {
-    const info = ninja?.getAttribute("data-info") ?? "[]";
-    const parsedInfo = JSON.parse(info);
-
-    const data = parsedInfo.map((item: any) => {
-      return {
-        ...item,
-        handler: () => {
-          window.open(item.url, "_blank");
-        },
-      };
-    });
-    ninja.data = [
-      {
-        id: "print",
-        title: "Imprimir",
-        hotkey: "ctrl+p",
-        icon: `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-printer" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2" /><path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4" /><path d="M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z" /></svg>`,
-        section: "Acciones",
-        handler: () => {
-          window.print();
-        },
-      },
-      ...data,
-    ];
-  }
-</script>
+<dialog id="modal" class="modal">
+  <section>
+    <header>
+      <label for="">
+        <input type="text" placeholder="Buscar comando" />
+      </label>
+    </header>
+    <main>
+      <article>
+        <p class="title-select">acciones</p>
+        <SelectAction className="select" action="Imprimir" hotkey="p">
+          <Printer slot="icon" width="24" height="24" />
+        </SelectAction>
+      </article>
+      <article>
+        <p class="title-select">Redes sociales</p>
+        {
+          profiles.map(({ network, url }) => {
+            const Icons = SOCIAL_ICONS[network];
+            const firstLetter = network[0].toUpperCase();
+            return (
+              <SelectAction
+                className="select"
+                action={`Visitar ${network}`}
+                hotkey={firstLetter}
+                url={url}
+              >
+                <Icons slot="icon" width="24" height="24" />
+              </SelectAction>
+            );
+          })
+        }
+      </article>
+    </main>
+    <footer>
+      <span>
+        <CornerDownLeft className="example-key" width="14" height="14" />
+        seleccionar
+      </span>
+      <span>
+        <ArrowDown className="example-key" width="14" height="14" />
+        <ArrowUp className="example-key" width="14" height="14" />
+        navegar
+      </span>
+      <span><span class="esc">esc</span>cerrar</span>
+    </footer>
+  </section>
+</dialog>
 
 <style>
-  footer {
+  .no-print {
     font-weight: 400;
     background: #fff;
     color: #030712;
@@ -79,6 +82,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
     width: 100%;
     padding: 2rem 1.5rem;
     display: none;
+    font-size: 16px;
 
     view-timeline-name: --revealing;
     view-timeline-axis: block;
@@ -86,6 +90,82 @@ const profilesInfo = profiles.map(({ network, url }) => {
     animation: linear 0.3s fadeIn;
     animation-timeline: --revealing;
     animation-range: entry 100% cover 10%;
+  }
+
+  dialog {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    border: none;
+  }
+
+  dialog::backdrop {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  section {
+    position: relative;
+    font-family: "Monaspace Argon";
+    max-width: 595px;
+    margin: auto;
+    top: 20%;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: rgb(0 0 0 / 50%) 0px 16px 70px;
+  }
+
+  input {
+    width: 100%;
+    border-bottom: 1px solid rgb(239, 241, 244);
+    border-top: none;
+    border-inline: none;
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+    outline: none;
+    color: #b2b2b2;
+  }
+
+  input::placeholder {
+    color: #b2b2b2;
+  }
+
+  main {
+    padding: 0.5rem 0;
+  }
+
+  .title-select {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #b2b2b2;
+  }
+
+  footer {
+    border-top: 1px solid rgb(239, 241, 244);
+    padding: 0.5rem 1rem;
+    font-size: 12px;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  footer span {
+    display: flex;
+    gap: 0.5rem;
+    color: #6b6f76;
+    font-weight: 400;
+  }
+
+  .esc {
+    background-color: rgb(239, 241, 244);
+    padding: 0.06rem 0.25rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
   }
 
   kbd {
@@ -99,7 +179,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
   }
 
   @media (min-width: 640px) {
-    footer {
+    .no-print {
       padding: 2rem 4rem;
       text-align: center;
       display: block;
@@ -107,7 +187,6 @@ const profilesInfo = profiles.map(({ network, url }) => {
   }
 
   @media print {
-    ninja-keys,
     .no-print {
       display: none !important;
     }
@@ -122,3 +201,36 @@ const profilesInfo = profiles.map(({ network, url }) => {
     }
   }
 </style>
+
+<style is:global>
+  .select:focus {
+    border-left: 2px solid rgb(110, 94, 210);
+    background-color: rgb(248, 249, 251);
+  }
+
+  .example-key {
+    background-color: rgb(239, 241, 244);
+    border-radius: 0.25rem;
+    color: #6b6f76;
+    stroke-width: 0.14rem;
+    padding: 0.1rem;
+  }
+</style>
+
+<script>
+  const dialog = document.querySelector(".modal") as HTMLDialogElement;
+
+  dialog.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target === dialog) dialog.close();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    const key = event.key;
+    const ctrlKey = event.ctrlKey;
+    if (ctrlKey && key === "k") {
+      event.preventDefault();
+      dialog.showModal();
+    }
+  });
+</script>

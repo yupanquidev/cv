@@ -1,0 +1,65 @@
+---
+interface Props {
+  action: string;
+  className: string;
+  hotkey: string;
+  url?: string;
+}
+
+const { action, className, hotkey, url } = Astro.props;
+---
+
+<a class={className} href={url} target="_blank">
+  <section>
+    <slot name="icon" />
+    <p>{action}</p>
+  </section>
+  <span>
+    <kbd>Ctrl</kbd>
+    <kbd>{hotkey}</kbd>
+  </span>
+</a>
+
+<style>
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: #3c4149;
+    border-left: 2px solid transparent;
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+  }
+
+  a:hover {
+    border-left: 2px solid rgb(110, 94, 210);
+    background-color: rgb(248, 249, 251);
+  }
+
+  section {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  p {
+    font-size: 0.875rem;
+  }
+
+  span {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 8px;
+    font-weight: 400;
+  }
+
+  kbd {
+    background-color: rgb(239, 241, 244);
+    padding: 0.06rem 0.25rem;
+    border-radius: 0.25rem;
+    color: #656668;
+    text-transform: capitalize;
+  }
+</style>
