@@ -26,7 +26,7 @@ const SOCIAL_ICONS: any = {
   <section>
     <header>
       <label for="">
-        <input type="text" placeholder="Buscar comando" />
+        <input class="search" type="text" placeholder="Buscar comando" />
       </label>
     </header>
     <main>
@@ -35,9 +35,6 @@ const SOCIAL_ICONS: any = {
         <SelectAction className="select-item" action="Imprimir" hotkey="p">
           <Printer slot="icon" width="24" height="24" />
         </SelectAction>
-      </article>
-      <article>
-        <p class="title-select">Redes sociales</p>
         {
           profiles.map(({ network, url }) => {
             const Icons = SOCIAL_ICONS[network];
@@ -215,22 +212,46 @@ const SOCIAL_ICONS: any = {
     stroke-width: 0.14rem;
     padding: 0.1rem;
   }
+
+  .filter {
+    visibility: hidden;
+    position: fixed;
+    opacity: 0;
+    height: 0;
+  }
 </style>
 
 <script>
-  const dialog = document.querySelector(".modal") as HTMLDialogElement;
+  const d = document;
+  const dialog = d.querySelector(".modal") as HTMLDialogElement;
 
-  dialog.addEventListener("click", (event) => {
-    const target = event.target;
+  dialog.addEventListener("click", (e) => {
+    const target = e.target;
     if (target === dialog) dialog.close();
   });
 
-  document.addEventListener("keydown", (event) => {
-    const key = event.key;
-    const ctrlKey = event.ctrlKey;
+  d.addEventListener("keydown", (e) => {
+    const key = e.key;
+    const ctrlKey = e.ctrlKey;
+
     if (ctrlKey && key === "k") {
-      event.preventDefault();
+      e.preventDefault();
       dialog.showModal();
+    }
+  });
+
+  // Search
+  d.addEventListener("keyup", (e) => {
+    const target = e.target as HTMLInputElement;
+    if (target.matches(".search")) {
+      d.querySelectorAll(".select-item").forEach((item) => {
+        const itemText = item.textContent?.toLowerCase();
+        const targetValue = target.value.toLowerCase();
+
+        itemText?.includes(targetValue)
+          ? item.classList.remove("filter")
+          : item.classList.add("filter");
+      });
     }
   });
 </script>
