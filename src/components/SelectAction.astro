@@ -4,12 +4,13 @@ interface Props {
   className: string;
   hotkey: string;
   url?: string;
+  selected?: boolean;
 }
 
-const { action, className, hotkey, url } = Astro.props;
+const { action, className, hotkey, url, selected } = Astro.props;
 ---
 
-<a class={className} href={url} target="_blank">
+<a class={className} href={url} aria-selected={selected} target="_blank">
   <section>
     <slot name="icon" />
     <p>{action}</p>
@@ -31,11 +32,6 @@ const { action, className, hotkey, url } = Astro.props;
     border-left: 2px solid transparent;
     cursor: pointer;
     padding: 0.75rem 1rem;
-  }
-
-  a:hover {
-    border-left: 2px solid rgb(110, 94, 210);
-    background-color: rgb(248, 249, 251);
   }
 
   section {
