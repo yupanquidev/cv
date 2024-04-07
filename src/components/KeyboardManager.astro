@@ -31,26 +31,31 @@ const SOCIAL_ICONS: any = {
     </header>
     <main>
       <article>
-        <p class="title-select">acciones</p>
-        <SelectAction className="select-item" action="Imprimir" hotkey="p">
-          <Printer slot="icon" width="24" height="24" />
-        </SelectAction>
-        {
-          profiles.map(({ network, url }) => {
-            const Icons = SOCIAL_ICONS[network];
-            const firstLetter = network[0].toUpperCase();
-            return (
-              <SelectAction
-                className="select-item"
-                action={`Visitar ${network}`}
-                hotkey={firstLetter}
-                url={url}
-              >
-                <Icons slot="icon" width="24" height="24" />
-              </SelectAction>
-            );
-          })
-        }
+        <div>
+          <p class="title-select">acciones</p>
+          <SelectAction className="select-item" action="Imprimir" hotkey="p">
+            <Printer slot="icon" width="24" height="24" />
+          </SelectAction>
+        </div>
+        <div>
+          <p class="title-select">Enlaces</p>
+          {
+            profiles.map(({ network, url }) => {
+              const Icons = SOCIAL_ICONS[network];
+              const firstLetter = network[0].toUpperCase();
+              return (
+                <SelectAction
+                  className="select-item"
+                  action={`Visitar ${network}`}
+                  hotkey={firstLetter}
+                  url={url}
+                >
+                  <Icons slot="icon" width="24" height="24" />
+                </SelectAction>
+              );
+            })
+          }
+        </div>
       </article>
     </main>
     <footer>
