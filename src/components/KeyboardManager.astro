@@ -258,7 +258,7 @@ const SOCIAL_ICONS: any = {
     const target = e.target as HTMLInputElement;
     if (target.matches(".search")) {
       d.querySelectorAll(".select-item").forEach((item) => {
-        const itemText = item.textContent?.toLowerCase();
+        const itemText = item.innerHTML.toLowerCase();
         const targetValue = target.value.toLowerCase();
 
         itemText?.includes(targetValue)
