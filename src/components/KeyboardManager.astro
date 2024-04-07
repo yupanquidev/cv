@@ -18,11 +18,11 @@ const SOCIAL_ICONS: any = {
 };
 ---
 
-<footer class="no-print">
+<footer class="no-print normal-footer">
   Pulsa <kbd>ctrl</kbd> + <kbd>K</kbd> para abrir la paleta de comandos.
 </footer>
 
-<dialog class="modal">
+<dialog class="modal no-print">
   <section>
     <header>
       <label for="">
@@ -79,24 +79,10 @@ const SOCIAL_ICONS: any = {
 </dialog>
 
 <style>
-  .no-print {
-    font-weight: 400;
-    background: #fff;
-    color: #030712;
-    border-top: 0.063rem solid #eee;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 2rem 1.5rem;
+  .normal-footer {
+    padding: 2rem 4rem;
+    text-align: center;
     display: none;
-    font-size: 16px;
-
-    view-timeline-name: --revealing;
-    view-timeline-axis: block;
-
-    animation: linear 0.3s fadeIn;
-    animation-timeline: --revealing;
-    animation-range: entry 100% cover 10%;
   }
 
   dialog {
@@ -186,10 +172,24 @@ const SOCIAL_ICONS: any = {
   }
 
   @media (min-width: 640px) {
-    .no-print {
-      padding: 2rem 4rem;
-      text-align: center;
+    .normal-footer {
+      font-weight: 400;
+      background: #fff;
+      color: #030712;
+      border-top: 0.063rem solid #eee;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 2rem 1.5rem;
       display: block;
+      font-size: 16px;
+
+      view-timeline-name: --revealing;
+      view-timeline-axis: block;
+
+      animation: linear 0.3s fadeIn;
+      animation-timeline: --revealing;
+      animation-range: entry 0% cover 100%;
     }
   }
 
@@ -235,6 +235,8 @@ const SOCIAL_ICONS: any = {
   const d = document;
   const dialog = d.querySelector(".modal") as HTMLDialogElement;
   const links = d.querySelectorAll(".select-item");
+  const letter = d.querySelectorAll(".hotkey-letter");
+  const noPrint = d.querySelector(".no-print");
 
   dialog.addEventListener("click", (e) => {
     const target = e.target;
@@ -266,7 +268,7 @@ const SOCIAL_ICONS: any = {
     }
   });
 
-  // Select item
+  // Navigation
   let selectIndex = 0;
   function selectItem(index: number) {
     links.forEach((link) => {
@@ -293,10 +295,38 @@ const SOCIAL_ICONS: any = {
       selectItem((selectIndex = operator));
     }
 
-    links.forEach((link, index) => {
-      link.addEventListener("mouseover", () => {
-        selectItem(index);
-      });
+    if (key === "Enter") {
+      e.preventDefault();
+      const link = links[selectIndex];
+      const url = link.getAttribute("href");
+      if (url) window.open(url, "_blank");
+    }
+  });
+
+  // Open with keyboard shortcut
+  d.addEventListener("keydown", (e) => {
+    letter.forEach((item, index) => {
+      e.preventDefault();
+      const key = e.key.toLowerCase();
+      const ctrlKey = e.ctrlKey;
+      const innerText = item.innerHTML.toLowerCase();
+
+      if (index !== 0) {
+        if (ctrlKey && key === innerText) {
+          const openLink = links[index].getAttribute("href");
+          window.open(openLink as string);
+        }
+      }
+
+      if (ctrlKey && key === "p" && index === 0) {
+        if (noPrint) window.print();
+      }
+    });
+  });
+
+  links.forEach((link, index) => {
+    link.addEventListener("mouseover", () => {
+      selectItem(index);
     });
   });
 </script>
