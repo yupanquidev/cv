@@ -297,16 +297,12 @@ const SOCIAL_ICONS: any = {
 
     if (key === "Enter") {
       e.preventDefault();
-      const link = links[selectIndex];
-      const url = link.getAttribute("href");
-      if (url) window.open(url, "_blank");
+      if (links[0]) window.print();
     }
+  });
 
-    if (key === "Enter") {
-      e.preventDefault();
-      const print = links[0];
-      if (print) window.print();
-    }
+  links[0].addEventListener("click", () => {
+    if (noPrint) window.print();
   });
 
   links.forEach((link, index) => {
