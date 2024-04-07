@@ -301,6 +301,18 @@ const SOCIAL_ICONS: any = {
       const url = link.getAttribute("href");
       if (url) window.open(url, "_blank");
     }
+
+    if (key === "Enter") {
+      e.preventDefault();
+      const print = links[0];
+      if (print) window.print();
+    }
+  });
+
+  links.forEach((link, index) => {
+    link.addEventListener("mouseover", () => {
+      selectItem(index);
+    });
   });
 
   // Open with keyboard shortcut
@@ -321,12 +333,6 @@ const SOCIAL_ICONS: any = {
       if (ctrlKey && key === "p" && index === 0) {
         if (noPrint) window.print();
       }
-    });
-  });
-
-  links.forEach((link, index) => {
-    link.addEventListener("mouseover", () => {
-      selectItem(index);
     });
   });
 </script>
