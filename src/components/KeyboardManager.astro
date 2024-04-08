@@ -25,7 +25,7 @@ const SOCIAL_ICONS: any = {
 <dialog class="modal no-print">
   <section>
     <header>
-      <label for="">
+      <label for="search">
         <input class="search" type="text" placeholder="Buscar comando" />
       </label>
     </header>
@@ -38,8 +38,9 @@ const SOCIAL_ICONS: any = {
             action="Imprimir"
             hotkey="p"
             selected
+            letterClass="print-letter"
           >
-            <Printer slot="icon" width="24" height="24" />
+            <Printer slot="icon" width="18" height="18" />
           </SelectAction>
         </div>
         <div>
@@ -54,8 +55,9 @@ const SOCIAL_ICONS: any = {
                   action={`Visitar ${network}`}
                   hotkey={firstLetter}
                   url={url}
+                  letterClass="hotkey-letter"
                 >
-                  <Icons slot="icon" width="24" height="24" />
+                  <Icons slot="icon" width="18" height="18" />
                 </SelectAction>
               );
             })
@@ -235,7 +237,8 @@ const SOCIAL_ICONS: any = {
   const d = document;
   const dialog = d.querySelector(".modal") as HTMLDialogElement;
   const links = d.querySelectorAll(".select-item");
-  const letter = d.querySelectorAll(".hotkey-letter");
+  const hotkeyLetters = d.querySelectorAll(".hotkey-letter");
+  const printLetter = d.querySelector(".print-letter") as HTMLElement;
   const noPrint = d.querySelector(".no-print");
 
   dialog.addEventListener("click", (e) => {
@@ -244,13 +247,15 @@ const SOCIAL_ICONS: any = {
   });
 
   d.addEventListener("keydown", (e) => {
-    const key = e.key;
+    const key = e.key.toLowerCase();
     const ctrlKey = e.ctrlKey;
 
     if (ctrlKey && key === "k") {
       e.preventDefault();
       dialog.showModal();
     }
+
+    if (e.key === "Escape") dialog.close();
   });
 
   // Search
@@ -261,7 +266,7 @@ const SOCIAL_ICONS: any = {
         const itemText = item.innerHTML.toLowerCase();
         const targetValue = target.value.toLowerCase();
 
-        itemText?.includes(targetValue)
+        itemText.includes(targetValue)
           ? item.classList.remove("filter")
           : item.classList.add("filter");
       });
@@ -282,6 +287,7 @@ const SOCIAL_ICONS: any = {
   d.addEventListener("keydown", (e) => {
     const subtract = links.length - 1;
     const key = e.key;
+    const enterKey = e.key === "Enter";
 
     if (key === "ArrowDown") {
       e.preventDefault();
@@ -295,9 +301,13 @@ const SOCIAL_ICONS: any = {
       selectItem((selectIndex = operator));
     }
 
-    if (key === "Enter") {
-      e.preventDefault();
-      if (links[0]) window.print();
+    if (selectIndex !== 0 && enterKey) {
+      const href = links[selectIndex].getAttribute("href");
+      window.open(href as string);
+    }
+
+    if (selectIndex === 0 && enterKey) {
+      if (noPrint) window.print();
     }
   });
 
@@ -312,23 +322,30 @@ const SOCIAL_ICONS: any = {
   });
 
   // Open with keyboard shortcut
+  let letters: any = {};
+  hotkeyLetters.forEach((item) => {
+    const letter = item.innerHTML.trim().toLowerCase();
+    const link = item.closest("a");
+    letters[letter] = link;
+    console.log(letter);
+  });
+
   d.addEventListener("keydown", (e) => {
-    letter.forEach((item, index) => {
+    const key = e.key.toLowerCase();
+    const ctrlKey = e.ctrlKey;
+
+    if (ctrlKey && letters[key]) {
       e.preventDefault();
-      const key = e.key.toLowerCase();
-      const ctrlKey = e.ctrlKey;
-      const innerText = item.innerHTML.toLowerCase();
+      const href = letters[key].getAttribute("href");
+      window.open(href);
+    }
+  });
 
-      if (index !== 0) {
-        if (ctrlKey && key === innerText) {
-          const openLink = links[index].getAttribute("href");
-          window.open(openLink as string);
-        }
-      }
+  const letter = printLetter.innerHTML.trim().toLowerCase();
+  d.addEventListener("keydown", (e) => {
+    const key = e.key.toLowerCase();
+    const ctrlKey = e.ctrlKey;
 
-      if (ctrlKey && key === "p" && index === 0) {
-        if (noPrint) window.print();
-      }
-    });
+    if (ctrlKey && key === letter) window.print();
   });
 </script>
