@@ -360,7 +360,9 @@ const SOCIAL_ICONS: Record<string, any> = {
   d.addEventListener("keydown", (e) => {
     const key = e.key.toLowerCase();
     const ctrlKey = e.ctrlKey;
-    e.preventDefault();
-    if (ctrlKey && key === letter) window.print();
+    if (ctrlKey && key === letter) {
+      e.preventDefault();
+      window.print();
+    }
   });
 </script>
