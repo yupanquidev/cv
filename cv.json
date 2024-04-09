@@ -8,7 +8,7 @@
     "url": "https://yupanqui.dev",
     "summary": "+3 años de experiencia en el desarrollo de aplicaciones web y móviles. He trabajado en proyectos de diferentes tamaños y tecnologías. Me gusta aprender y compartir conocimientos.",
     "location": {
-      "address": "",
+      "address": "Cusco, Perú",
       "postalCode": "08820",
       "city": "Cusco",
       "countryCode": "PE",
@@ -17,17 +17,17 @@
     "profiles": [
       {
         "network": "LinkedIn",
-        "username": "midudev",
+        "username": "yupanquidev",
         "url": "https://linkedin.com/in/yupanquidev"
       },
       {
         "network": "X",
-        "username": "midudev",
+        "username": "yupanquidev",
         "url": "https://x.com/yupanquidev"
       },
       {
         "network": "GitHub",
-        "username": "midudev",
+        "username": "yupanquidev",
         "url": "https://github.com/yupanquidev"
       }
     ]
@@ -131,25 +131,6 @@
         "Colaboración",
         "Código Fuente",
         "Git"
-      ]
-    },
-    {
-      "name": "Next.js",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "React Framework",
-        "SSR",
-        "Static Generation"
-      ]
-    },
-    {
-      "name": "React",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "JavaScript Library",
-        "UI"
       ]
     }
   ],
