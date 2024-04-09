@@ -7,14 +7,16 @@ import GitHub from "@/icons/GitHub.astro";
 import LinkedIn from "@/icons/LinkedIn.astro";
 import Printer from "@/icons/Printer.astro";
 import X from "@/icons/X.astro";
+import World from "@/icons/World.astro";
 
 import { basics } from "@/cv";
-const { profiles } = basics;
+const { profiles, url } = basics;
 
-const SOCIAL_ICONS: any = {
+const SOCIAL_ICONS: Record<string, any> = {
   LinkedIn,
   GitHub,
   X,
+  World,
 };
 ---
 
@@ -47,20 +49,33 @@ const SOCIAL_ICONS: any = {
           <p class="title-select">Enlaces</p>
           {
             profiles.map(({ network, url }) => {
-              const Icons = SOCIAL_ICONS[network];
+              const Icon = SOCIAL_ICONS[network];
               const firstLetter = network[0].toUpperCase();
               return (
                 <SelectAction
                   className="select-item"
-                  action={`Visitar ${network}`}
+                  action={network}
                   hotkey={firstLetter}
                   url={url}
                   letterClass="hotkey-letter"
                 >
-                  <Icons slot="icon" width="18" height="18" />
+                  <Icon slot="icon" width="18" height="18" />
                 </SelectAction>
               );
             })
+          }
+          {
+            url && (
+              <SelectAction
+                className="select-item"
+                action="Mi sitio web"
+                hotkey="y"
+                url={url}
+                letterClass="hotkey-letter"
+              >
+                <World slot="icon" width="18" height="18" />
+              </SelectAction>
+            )
           }
         </div>
       </article>
@@ -345,7 +360,7 @@ const SOCIAL_ICONS: any = {
   d.addEventListener("keydown", (e) => {
     const key = e.key.toLowerCase();
     const ctrlKey = e.ctrlKey;
-
+    e.preventDefault();
     if (ctrlKey && key === letter) window.print();
   });
 </script>
