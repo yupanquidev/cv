@@ -9,13 +9,15 @@ import { education } from "@/cv";
     education.map(({ institution, startDate, endDate, url, area }) => {
       const startYear = new Date(startDate).getFullYear();
       const endYear =
-        endDate != null ? new Date(endDate).getFullYear() : "Actual";
+        endDate != "" ? new Date(endDate).getFullYear() : "Actual";
       const years = `${startYear} - ${endYear}`;
       return (
         <article>
           <header>
             <h3>
-              <a href={url}>{institution}</a>
+              <a href={url} target="_blank">
+                {institution}
+              </a>
             </h3>
             <time>{years}</time>
           </header>

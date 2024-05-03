@@ -34,11 +34,22 @@
   },
   "work": [
     {
+      "name": "SOFTCONT P&R",
+      "position": "Full Stack Developer",
+      "url": "https://softcont.pe/",
+      "startDate": "2024-04-15",
+      "endDate": "",
+      "summary": "",
+      "highlights": [
+        "Started the company"
+      ]
+    },
+    {
       "name": "ITETNIA",
       "position": "Full Stack Developer",
-      "url": "itetnia.com",
+      "url": "https://www.itetnia.com/",
       "startDate": "2023-08-01",
-      "endDate": "2025",
+      "endDate": "2024-04-12",
       "summary": "",
       "highlights": [
         "Started the company"
@@ -52,7 +63,7 @@
       "area": "Ingeniero de Software",
       "studyType": "Bachelor",
       "startDate": "2021-01-01",
-      "endDate": "2025-01-01"
+      "endDate": ""
     }
   ],
   "skills": [
@@ -122,15 +133,6 @@
         "Control de Versiones",
         "Colaboración",
         "Código Fuente"
-      ]
-    },
-    {
-      "name": "GitHub",
-      "keywords": [
-        "Control de Versiones",
-        "Colaboración",
-        "Código Fuente",
-        "Git"
       ]
     }
   ],

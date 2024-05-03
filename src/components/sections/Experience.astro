@@ -1,23 +1,27 @@
 ---
-import Section from "@/components/Section.astro"
+import Section from "@/components/Section.astro";
 
-import { work } from "@/cv"
+import { work } from "@/cv";
 ---
 
 <Section title="Experiencia">
   <ul>
     {
-      work.map(({ name, startDate, endDate, position, summary }) => {
+      work.map(({ name, startDate, endDate, position, summary, url }) => {
         const startYear = new Date(startDate).getFullYear();
         const endYear =
-          endDate != null ? new Date(endDate).getFullYear() : "Actual";
+          endDate != "" ? new Date(endDate).getFullYear() : "Actual";
         const years = `${startYear} - ${endYear}`;
         return (
           <li>
             <article>
               <header>
                 <div>
-                  <h3>{name}</h3>
+                  <h3>
+                    <a href={url} target="_blank">
+                      {name}
+                    </a>
+                  </h3>
                   <h4>{position}</h4>
                 </div>
                 <time>{years}</time>
@@ -45,6 +49,14 @@ import { work } from "@/cv"
     font-weight: 700;
     margin-bottom: 0.125rem;
     color: #030712;
+  }
+
+  a {
+    color: #030712;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 
   h4 {
