@@ -2,5 +2,5 @@
 ## Recursos
 - [Iconos](https://tabler.io/icons)
 ### Fonts:
-- [N27](https://www.atipofoundry.com/fonts/n27)
+- [Geist](https://vercel.com/font)
 - [Monaspace](https://monaspace.githubnext.com/)
