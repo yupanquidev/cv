@@ -13,8 +13,5 @@
     "@astrojs/check": "0.6.0",
     "astro": "4.8.3",
     "typescript": "5.4.5"
-  },
-  "devDependencies": {
-    "oxlint": "0.3.4"
   }
 }
