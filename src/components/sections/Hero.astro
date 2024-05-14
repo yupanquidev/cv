@@ -1,12 +1,14 @@
 ---
 import Section from "@/components/Section.astro";
-import { basics } from "@/cv";
+
 import GitHub from "@/icons/GitHub.astro";
 import LinkedIn from "@/icons/LinkedIn.astro";
 import Mail from "@/icons/Mail.astro";
-import Phone from "@/icons/Phone.astro";
+import Whatsapp from "@/icons/Whatsapp.astro";
 import World from "@/icons/World.astro";
 import X from "@/icons/X.astro";
+
+import { basics } from "@/cv";
 
 const { name, label, image, location, profiles, phone, email } = basics;
 const { city, region } = location;
@@ -49,14 +51,14 @@ const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
           )
         }
         {
-          phone && (
+          Whatsapp && (
             <a
-              href={`tel:${phone}`}
-              aria-label={`Llamar por teléfono a ${name} al número ${phone}`}
+              href={`https://wa.me/${phone}`}
+              aria-label={`Enviar un mensaje de WhatsApp a ${name} al número ${phone}`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Phone width="18" height="18" />
+              <Whatsapp width="18" height="18" />
             </a>
           )
         }
