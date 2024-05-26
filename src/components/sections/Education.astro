@@ -10,20 +10,19 @@ import { education } from "@/cv";
       const startYear = new Date(startDate).getFullYear();
       const endYear =
         endDate != "" ? new Date(endDate).getFullYear() : "Actual";
-      const years = `${startYear} - ${endYear}`;
       return (
         <article>
           <header>
-            <h3>
+            <h4>
               <a href={url} target="_blank">
                 {institution}
               </a>
-            </h3>
-            <time>{years}</time>
+              <time>
+                {startYear} <span>-</span> {endYear}
+              </time>
+            </h4>
           </header>
-          <footer>
-            <p>{area}</p>
-          </footer>
+          <p>{area}</p>
         </article>
       );
     })
@@ -31,21 +30,6 @@ import { education } from "@/cv";
 </Section>
 
 <style>
-  h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 0.125rem;
-    color: #030712;
-  }
-
-  a {
-    color: #030712;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
   article {
     display: flex;
     flex-direction: column;
@@ -54,18 +38,44 @@ import { education } from "@/cv";
 
   header {
     display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  h4 {
+    width: 100%;
+    display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-end;
+  }
+
+  a {
+    color: #09090b;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 
   time {
-    color: #6b7280;
-    font-size: 0.875rem;
+    color: #525468;
+    font-size: 14px;
+    font-family: "Monaspace Argon";
+    font-weight: 400;
+  }
+
+  time > span {
+    font-size: 16px;
+    font-weight: 900;
+    color: #000;
+    line-height: 0.5;
   }
 
   p {
-    color: #6b7280;
+    color: #60637a;
     font-weight: 400;
-    font-size: 0.875rem;
+    font-size: 14px;
   }
 </style>
