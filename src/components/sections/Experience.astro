@@ -11,25 +11,20 @@ import { work } from "@/cv";
         const startYear = new Date(startDate).getFullYear();
         const endYear =
           endDate != "" ? new Date(endDate).getFullYear() : "Actual";
-        const years = `${startYear} - ${endYear}`;
         return (
           <li>
-            <article>
-              <header>
-                <div>
-                  <h3>
-                    <a href={url} target="_blank">
-                      {name}
-                    </a>
-                  </h3>
-                  <h4>{position}</h4>
-                </div>
-                <time>{years}</time>
-              </header>
-              <footer>
-                <p>{summary}</p>
-              </footer>
-            </article>
+            <header>
+              <h4>
+                <a href={url} target="_blank">
+                  {name}
+                </a>
+                <time>
+                  {startYear} <span>-</span> {endYear}
+                </time>
+              </h4>
+              <h3>{position}</h3>
+            </header>
+            <p>{summary}</p>
           </li>
         );
       })
@@ -41,52 +36,62 @@ import { work } from "@/cv";
   ul {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 14px;
   }
 
-  h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 0.125rem;
-    color: #030712;
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  h4 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
   }
 
   a {
-    color: #030712;
+    color: #09090b;
+    font-size: 14px;
+    font-weight: 700;
   }
 
   a:hover {
     text-decoration: underline;
   }
 
-  h4 {
-    font-family: "Monaspace Argon";
-    color: #030712;
-    font-weight: 500;
-    font-size: 0.875rem;
-  }
-
-  article,
-  article div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
   time {
-    color: #6b7280;
-    font-size: 0.875rem;
+    color: #525468;
+    font-size: 14px;
+    font-family: "Monaspace Argon";
+    font-weight: 400;
+  }
+
+  time > span {
+    font-size: 16px;
+    font-weight: 900;
+    color: #000;
+    line-height: 0.5;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Monaspace Argon";
+    color: #3f3f4b;
   }
 
   p {
-    color: #6b7280;
+    color: #60637a;
     font-weight: 400;
-    font-size: 0.875rem;
+    font-size: 14px;
   }
 </style>
