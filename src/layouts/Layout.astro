@@ -1,6 +1,8 @@
 ---
+import Head from "@/components/Head.astro";
+
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,35 +10,9 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+	<Head>
 		<title>{title}</title>
-		<link
-			rel="preload"
-			href="/fonts/monaspace/NeonVarVF.ttf"
-			as="font"
-			type="font/ttf"
-			crossorigin="anonymous"
-		/>
-		<link
-			rel="preload"
-			href="/fonts/monaspace/ArgonVarVF.ttf"
-			as="font"
-			type="font/ttf"
-			crossorigin="anonymous"
-		/>
-		<link
-			rel="preload"
-			href="/fonts/geist/VF.woff2"
-			as="font"
-			type="font/woff2"
-			crossorigin="anonymous"
-		/>
-	</head>
+	</Head>
 	<body>
 		<slot />
 	</body>
