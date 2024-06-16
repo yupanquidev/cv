@@ -68,72 +68,31 @@
   ],
   "skills": [
     {
-      "name": "HTML",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend"
-      ]
+      "name": "HTML"
     },
     {
-      "name": "CSS",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "Diseño Responsive"
-      ]
+      "name": "CSS"
     },
     {
-      "name": "JavaScript",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "Backend",
-        "Fullstack"
-      ]
+      "name": "JavaScript"
     },
     {
-      "name": "TailwindCSS",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "CSS Framework",
-        "Diseño Responsive"
-      ]
+      "name": "TailwindCSS"
     },
     {
-      "name": "TypeScript",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "Backend",
-        "JavaScript Superset"
-      ]
+      "name": "TypeScript"
     },
     {
-      "name": "Node.js",
-      "keywords": [
-        "Desarrollo Web",
-        "Backend",
-        "JavaScript",
-        "Servidor"
-      ]
+      "name": "Nodejs"
     },
     {
-      "name": "MySQL",
-      "keywords": [
-        "Bases de Datos",
-        "SQL",
-        "Almacenamiento de Datos",
-        "Backend"
-      ]
+      "name": "Go"
     },
     {
-      "name": "Git",
-      "keywords": [
-        "Control de Versiones",
-        "Colaboración",
-        "Código Fuente"
-      ]
+      "name": "SQL"
+    },
+    {
+      "name": "Git"
     }
   ],
   "languages": [
