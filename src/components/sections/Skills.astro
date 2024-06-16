@@ -1,34 +1,74 @@
 ---
 import Section from "@/components/Section.astro";
 
+import CSS from "@/icons/CSS.astro";
+import Git from "@/icons/Git.astro";
+import Go from "@/icons/Go.astro";
+import HTML from "@/icons/HTML.astro";
+import JavaScript from "@/icons/JavaScript.astro";
+import Laravel from "@/icons/Laravel.astro";
+import Nodejs from "@/icons/Nodejs.astro";
+import PHP from "@/icons/PHP.astro";
+import SQL from "@/icons/SQL.astro";
+import TailwindCSS from "@/icons/TailwindCSS.astro";
+import TypeScript from "@/icons/TypeScript.astro";
+
 import { skills } from "@/cv";
+
+const SKILLS_ICONS: Record<string, any> = {
+  Go,
+  JavaScript,
+  TypeScript,
+  CSS,
+  Laravel,
+  Nodejs,
+  TailwindCSS,
+  PHP,
+  SQL,
+  Git,
+  HTML,
+};
 ---
 
-<Section title="Skills">
+<Section title="Habilidades">
   <ul>
     {
-      skills.map(({ name }) => (
-        <li>
-          <span>{name}</span>
-        </li>
-      ))
+      skills.map(({ name }) => {
+        const iconName = name === "HTML" ? "HTML" : name;
+        const Icon = SKILLS_ICONS[iconName];
+
+        return (
+          <li>
+            {Icon && <Icon width="18" height="18" className="icon" />}
+            <span>{name}</span>
+          </li>
+        );
+      })
     }
   </ul>
 </Section>
+
 <style>
   ul {
     display: inline-flex;
-    gap: 0.5rem;
+    gap: 6px 6px;
     flex-wrap: wrap;
-  }
 
-  li {
-    font-family: "Monaspace Argon";
-    font-size: 0.75rem;
-    font-weight: 400;
-    border-radius: 0.5rem;
-    background-color: #f1f1f1;
-    color: #030712;
-    padding: 0.2rem 0.6rem;
+    li {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: "Monaspace Argon";
+      border-radius: 6px;
+      background-color: #e4e5e9;
+      color: #09090b;
+      padding: 2px 6px;
+
+      span {
+        padding-top: 2px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
   }
 </style>
