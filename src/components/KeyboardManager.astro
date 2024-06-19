@@ -1,5 +1,6 @@
 ---
 import SelectAction from "@/components/SelectAction.astro";
+
 import ArrowDown from "@/icons/ArrowDown.astro";
 import ArrowUp from "@/icons/ArrowUp.astro";
 import CornerDownLeft from "@/icons/CornerDownLeft.astro";
@@ -20,65 +21,62 @@ const SOCIAL_ICONS: Record<string, any> = {
 };
 ---
 
-<footer class="no-print normal-footer">
-  Pulsa <kbd>ctrl</kbd> + <kbd>K</kbd> para abrir la paleta de comandos.
-</footer>
-
 <dialog class="modal no-print">
-  <section>
-    <header>
-      <label for="search">
-        <input class="search" type="text" placeholder="Buscar comando" />
-      </label>
-    </header>
+  <article>
+    <label for="search">
+      <input
+        id="search"
+        class="search"
+        type="text"
+        placeholder="Buscar comando"
+      />
+    </label>
     <main>
-      <article>
-        <div>
-          <p class="title-select">acciones</p>
-          <SelectAction
-            className="select-item"
-            action="Imprimir"
-            hotkey="p"
-            selected
-            letterClass="print-letter"
-          >
-            <Printer slot="icon" width="18" height="18" />
-          </SelectAction>
-        </div>
-        <div>
-          <p class="title-select">Enlaces</p>
-          {
-            profiles.map(({ network, url }) => {
-              const Icon = SOCIAL_ICONS[network];
-              const firstLetter = network[0].toUpperCase();
-              return (
-                <SelectAction
-                  className="select-item"
-                  action={network}
-                  hotkey={firstLetter}
-                  url={url}
-                  letterClass="hotkey-letter"
-                >
-                  <Icon slot="icon" width="18" height="18" />
-                </SelectAction>
-              );
-            })
-          }
-          {
-            url && (
+      <section>
+        <span>acciones</span>
+        <SelectAction
+          className="select-item"
+          action="Imprimir"
+          hotkey="p"
+          selected
+          letterClass="print-letter"
+        >
+          <Printer slot="icon" width="18" height="18" />
+        </SelectAction>
+      </section>
+      <section>
+        <span>Enlaces</span>
+        {
+          profiles.map(({ network, url }) => {
+            const Icon = SOCIAL_ICONS[network];
+            const firstLetter = network[0].toUpperCase();
+            return (
               <SelectAction
                 className="select-item"
-                action="Mi sitio web"
-                hotkey="y"
+                action={network}
+                hotkey={firstLetter}
                 url={url}
                 letterClass="hotkey-letter"
               >
-                <World slot="icon" width="18" height="18" />
+                <Icon slot="icon" width="18" height="18" />
               </SelectAction>
-            )
-          }
-        </div>
-      </article>
+            );
+          })
+        }
+        {
+          url && (
+            <SelectAction
+              className="select-item"
+              action="Mi sitio web"
+              hotkey="y"
+              url={url}
+              letterClass="hotkey-letter"
+            >
+              <World slot="icon" width="18" height="18" />
+            </SelectAction>
+          )
+        }
+      </section>
     </main>
     <footer>
       <span>
@@ -92,85 +90,80 @@ const SOCIAL_ICONS: Record<string, any> = {
       </span>
       <span><span class="esc">esc</span>cerrar</span>
     </footer>
-  </section>
+  </article>
 </dialog>
 
 <style>
-  .normal-footer {
-    padding: 2rem 4rem;
-    text-align: center;
-    display: none;
-  }
-
   dialog {
-    padding: 0;
-    position: fixed;
     width: 100%;
     height: 100%;
-    left: 0;
-    top: 0;
+    padding: 0;
     background-color: transparent;
     border: none;
+
+    article {
+      position: relative;
+      max-width: 595px;
+      margin: auto;
+      top: 20%;
+      background-color: #fff;
+      border-radius: 8px;
+      filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+
+      label {
+        input {
+          width: 100%;
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
+          border-top: none;
+          border-inline: none;
+          border-bottom: 1px solid #e4e5e9;
+          padding: 16px;
+          font-family: "Monaspace Argon";
+          font-size: 16px;
+          font-weight: 700;
+          outline: none;
+          color: #a7aab9;
+        }
+
+        input::placeholder {
+          color: #a7aab9;
+        }
+      }
+
+      main {
+        padding: 16px 0;
+
+        section {
+          span {
+            color: #a7aab9;
+            font-size: 12px;
+            font-family: "Monaspace Argon";
+            padding-left: 16px;
+          }
+        }
+      }
+
+      footer {
+        border-top: 1px solid rgb(239, 241, 244);
+        padding: 0.5rem 1rem;
+        font-size: 12px;
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+
+        span {
+          display: flex;
+          gap: 0.5rem;
+          color: #6b6f76;
+          font-weight: 400;
+        }
+      }
+    }
   }
 
   dialog::backdrop {
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(4px);
-  }
-
-  section {
-    position: relative;
-    font-family: "Monaspace Argon";
-    max-width: 595px;
-    margin: auto;
-    top: 20%;
-    background-color: #fff;
-    border-radius: 0.5rem;
-    filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
-  }
-
-  input {
-    width: 100%;
-    border-bottom: 1px solid rgb(239, 241, 244);
-    border-top: none;
-    border-inline: none;
-    border-radius: 0.5rem;
-    padding: 1.25rem;
-    font-size: 1.125rem;
-    font-weight: 500;
-    outline: none;
-    color: #b2b2b2;
-  }
-
-  input::placeholder {
-    color: #b2b2b2;
-  }
-
-  main {
-    padding: 0.5rem 0;
-  }
-
-  .title-select {
-    padding: 0.5rem 1rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #b2b2b2;
-  }
-
-  footer {
-    border-top: 1px solid rgb(239, 241, 244);
-    padding: 0.5rem 1rem;
-    font-size: 12px;
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-
-    & span {
-      display: flex;
-      gap: 0.5rem;
-      color: #6b6f76;
-      font-weight: 400;
-    }
+    background: rgba(167, 170, 185, 0.5);
   }
 
   .esc {
