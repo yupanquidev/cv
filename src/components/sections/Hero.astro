@@ -26,69 +26,78 @@ const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
 ---
 
 <Section>
-  <article class="container">
+  <div>
     <figure>
       <img src={image} alt={name} />
     </figure>
-    <main class="info">
-      <h1>{name}</h1>
-      <p>{label}</p>
-    </main>
-    <footer class="print">
-      {printInfo}
-    </footer>
-    <footer class="no-print">
-      <span>
-        <World width="18" height="18" />
-        {city}, {region}
-      </span>
-      <section>
-        {
-          email && (
-            <a
-              href={`mailto:${email}`}
-              aria-label={`Enviar un correo electrónico a ${name} al correo ${email}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Mail width="18" height="18" />
-            </a>
-          )
-        }
-        {
-          Whatsapp && (
-            <a
-              href={`https://wa.me/${phone}`}
-              aria-label={`Enviar un mensaje de WhatsApp a ${name} al número ${phone}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Whatsapp width="18" height="18" />
-            </a>
-          )
-        }
-        {
-          profiles.map(({ network, url }) => {
-            const Icon = SOCIAL_ICONS[network];
-
-            return (
+    <article class="container">
+      <main class="info">
+        <h1>{name}</h1>
+        <p>{label}</p>
+      </main>
+      <footer class="print">
+        {printInfo}
+      </footer>
+      <footer class="no-print">
+        <span>
+          <World width="18" height="18" />
+          {city}, {region}
+        </span>
+        <section>
+          {
+            email && (
               <a
-                href={url}
+                href={`mailto:${email}`}
+                aria-label={`Enviar un correo electrónico a ${name} al correo ${email}`}
                 target="_blank"
-                aria-label={`Visitar el perfil de ${name} en ${network}`}
                 rel="noopener noreferrer"
               >
-                <Icon width="18" height="18" />
+                <Mail width="18" height="18" />
               </a>
-            );
-          })
-        }
-      </section>
-    </footer>
-  </article>
+            )
+          }
+          {
+            Whatsapp && (
+              <a
+                href={`https://wa.me/${phone}`}
+                aria-label={`Enviar un mensaje de WhatsApp a ${name} al número ${phone}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Whatsapp width="18" height="18" />
+              </a>
+            )
+          }
+          {
+            profiles.map(({ network, url }) => {
+              const Icon = SOCIAL_ICONS[network];
+
+              return (
+                <a
+                  href={url}
+                  target="_blank"
+                  aria-label={`Visitar el perfil de ${name} en ${network}`}
+                  rel="noopener noreferrer"
+                >
+                  <Icon width="18" height="18" />
+                </a>
+              );
+            })
+          }
+        </section>
+      </footer>
+    </article>
+  </div>
 </Section>
 
 <style>
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
   .container,
   .info {
     width: 100%;
@@ -113,7 +122,7 @@ const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
   }
 
   figure {
-    margin: 0;
+    margin: 0 auto;
     width: 120px;
   }
 
@@ -186,9 +195,27 @@ const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
     }
   }
 
-  @media (min-width: 640px) {
-    figure {
-      display: block;
+  @media (min-width: 620px) {
+    div {
+      margin-top: 32px;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+
+      .container {
+        padding-right: 24px;
+        align-items: flex-start;
+
+        .info {
+          align-items: flex-start;
+          text-align: left;
+        }
+
+        .no-print {
+          align-items: flex-start;
+        }
+      }
     }
   }
 </style>
