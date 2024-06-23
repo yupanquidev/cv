@@ -15,33 +15,33 @@ const { name } = basics;
 ---
 
 <Layout title=`${name}`>
-	<main>
-		<Hero />
-		<About />
-		<Experience />
-		<Education />
-		<Projects />
-		<Skills />
-	</main>
-	<KeyboardManager />
-	<Footer />
+  <main>
+    <Hero />
+    <About />
+    <Experience />
+    <Education />
+    <Projects />
+    <Skills />
+  </main>
+  <KeyboardManager />
+  <Footer />
 </Layout>
 
 <style>
-	main {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		gap: 40px;
-		padding: 32px 16px;
-		margin: 0 auto;
-	}
+  main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 32px 16px;
+    margin: 0 auto;
+  }
 
-	@media (min-width: 640px) {
-		main {
-			max-width: 595px;
-			padding: 32px 0 0 0;
-			padding-top: 32px;
-		}
-	}
+  @media (min-width: 640px) {
+    main {
+      max-width: 595px;
+      padding: 32px 0 32px 0;
+      padding-top: 32px;
+    }
+  }
 </style>
