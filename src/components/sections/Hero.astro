@@ -1,5 +1,6 @@
 ---
 import Section from "@/components/Section.astro";
+import YearsOfExperience from "@/components/YearsOfExperience.astro";
 
 import GitHub from "@/icons/GitHub.astro";
 import LinkedIn from "@/icons/LinkedIn.astro";
@@ -10,7 +11,8 @@ import X from "@/icons/X.astro";
 
 import { basics } from "@/cv";
 
-const { name, label, image, location, profiles, phone, email } = basics;
+const { name, label_1, label_2, image, location, profiles, phone, email } =
+  basics;
 const { city, region } = location;
 
 const SOCIAL_ICONS: Record<string, any> = {
@@ -33,7 +35,11 @@ const printInfo = [email, phone, likedinUrl].filter(Boolean).join(" • ");
     <article class="container">
       <main class="info">
         <h1>{name}</h1>
-        <p>{label}</p>
+        <p>
+          {label_1}
+          <YearsOfExperience />
+          {label_2}
+        </p>
       </main>
       <footer class="print">
         {printInfo}
