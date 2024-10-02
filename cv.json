@@ -40,9 +40,7 @@
       "startDate": "2024-04-15",
       "endDate": "2024-07-25",
       "summary": "Implementación de nuevas funcionalidades en la aplicación web de la empresa.",
-      "highlights": [
-        "Started the company"
-      ]
+      "highlights": ["Started the company"]
     },
     {
       "name": "ITETNIA",
@@ -51,9 +49,7 @@
       "startDate": "2023-08-01",
       "endDate": "2024-04-12",
       "summary": "",
-      "highlights": [
-        "Started the company"
-      ]
+      "highlights": ["Started the company"]
     }
   ],
   "education": [
@@ -108,10 +104,7 @@
   "interests": [
     {
       "name": "Wildlife",
-      "keywords": [
-        "Ferrets",
-        "Unicorns"
-      ]
+      "keywords": ["Ferrets", "Unicorns"]
     }
   ],
   "references": [
@@ -125,10 +118,7 @@
       "name": "OdontoApp",
       "isActive": true,
       "description": "Aplicación para la gestión de clínicas dentales",
-      "highlights": [
-        "Gestión de pacientes",
-        "Gestión de citas"
-      ],
+      "highlights": ["Gestión de pacientes", "Gestión de citas"],
       "url": "#",
       "repository": "#"
     }

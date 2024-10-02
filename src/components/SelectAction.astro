@@ -1,14 +1,14 @@
 ---
 interface Props {
-  action: string;
-  className: string;
-  hotkey: string;
-  url?: string;
-  selected?: boolean;
-  letterClass: string;
+	action: string
+	className: string
+	hotkey: string
+	url?: string
+	selected?: boolean
+	letterClass: string
 }
 
-const { action, className, hotkey, url, selected, letterClass } = Astro.props;
+const { action, className, hotkey, url, selected, letterClass } = Astro.props
 ---
 
 <a class={className} href={url} aria-selected={selected} target="_blank">
