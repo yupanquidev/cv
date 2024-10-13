@@ -10,10 +10,12 @@ import Printer from '@/icons/Printer.astro'
 import World from '@/icons/World.astro'
 import X from '@/icons/X.astro'
 
+import type { SocialIcon } from '@/types'
+
 import { basics } from '@/cv'
 const { profiles, url } = basics
 
-const SOCIAL_ICONS: Record<string, any> = {
+const SOCIAL_ICONS: SocialIcon = {
 	LinkedIn,
 	GitHub,
 	X,
