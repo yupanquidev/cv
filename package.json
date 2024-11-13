@@ -7,19 +7,12 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "lint": "biome lint .",
-    "format": "pnpm run format:code && pnpm run format:imports",
-    "format:code": "biome format . --write && prettier -w \"**/*\" \"!**/*.{md,mdx}\" --ignore-unknown --cache",
-    "format:imports": "biome check --formatter-enabled=false --write"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "0.6.0",
     "astro": "4.8.3",
     "hotkeypad": "0.1.1",
     "typescript": "5.4.5"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.3"
   }
 }
